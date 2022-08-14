@@ -1,0 +1,75 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+.container {
+  width: 90%;
+  margin: 4vw auto;
+}
+
+.cards-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3%;
+}
+
+.mat-toolbar {
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+  justify-content: space-between;
+}
+
+.mat-card {
+  background: transparent;
+}
+
+.cards {
+  width: 30%;
+  flex-grow: 1;
+  &:first-of-type {
+    margin-left: 0;
+  }
+}
+
+.sub-cards {
+  margin-top: 1vw;
+  background: #fff;
+}
+
+.sub-cards.mat-card {
+  box-shadow: none;
+  border:1px solid #ddd;
+}
+
+.mat-card-footer {
+  text-align: center;
+  padding: 15% 15% 8% 15%;
+  a {
+    text-decoration: none;
+    color: #0cafff;
+    font-weight: bold;
+  }
+}
+
+.todo-color {
+  color: #fd5c63;
+}
+
+.in-progress-color {
+  color: #ffc72c;
+}
+
+.done-color {
+  color: #32de84;
+}
+
+.mat-card-title {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 6%;
+  margin-bottom: 6%;
+}
