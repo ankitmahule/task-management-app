@@ -1,7 +1,8 @@
-import { Dialog } from '@angular/cdk/dialog';
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AddTaskComponent } from './add-task/add-task.component';
+import { TaskManagementService } from './service/task-management.service';
+import { DATA } from './shared/data';
 
 @Component({
   selector: 'app-root',
@@ -10,59 +11,23 @@ import { AddTaskComponent } from './add-task/add-task.component';
 })
 export class AppComponent {
   private taskName: string = '';
+  public tasksList = DATA;
 
-  constructor(private dialog: MatDialog) {}
+  constructor(
+    private dialog: MatDialog,
+    private taskManagementService: TaskManagementService
+  ) {}
 
-  openDialog(): void {
+  public openAddTaskDialog(isAddingList: boolean, categoryId?: number): void {
     const dialogRef = this.dialog.open(AddTaskComponent, {
-      data: { name: this.taskName },
+      width: '400px',
+      data: { taskName: this.taskName, isAddingList, categoryId },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      /* console.log('The dialog was closed');
-      this.animal = result; */
+      if(result) {
+        this.taskManagementService.addTasks(result);
+      }
     });
   }
-
-  public tasksList= [
-    {
-      categoryId: 1,
-      categoryName: 'To Do',
-      tasks: [
-        {
-          taskId: 101,
-          taskName: 'Pay Electricity Bill',
-        },
-        { taskId: 102, taskName: 'Pay Electricity Bill' },
-        { taskId: 103, taskName: 'Pay Electricity Bill' },
-        { taskId: 104, taskName: 'Pay Electricity Bill' },
-      ],
-    },
-    {
-      categoryId: 2,
-      categoryName: 'In Progress',
-      tasks: [
-        {
-          taskId: 101,
-          taskName: 'Pay Electricity Bill',
-        },
-        { taskId: 102, taskName: 'Pay Electricity Bill' },
-        { taskId: 103, taskName: 'Pay Electricity Bill' },
-        { taskId: 104, taskName: 'Pay Electricity Bill' },
-      ],
-    },
-    {
-      categoryId: 3,
-      categoryName: 'Done',
-      tasks: [
-        {
-          taskId: 101,
-          taskName: 'Pay Electricity Bill',
-        },
-        { taskId: 102, taskName: 'Pay Electricity Bill' },
-        { taskId: 103, taskName: 'Pay Electricity Bill' },
-        { taskId: 104, taskName: 'Pay Electricity Bill' },
-      ],
-    },
-  ];
 }

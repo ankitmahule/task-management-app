@@ -6,19 +6,18 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { AddTaskComponent } from './add-task/add-task.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    AddTaskComponent
-  ],
+  declarations: [AppComponent, AddTaskComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SharedModule,
     FormsModule,
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

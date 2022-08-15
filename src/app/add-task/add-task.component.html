@@ -1,11 +1,18 @@
-<h1 mat-dialog-title>Add Task</h1>
+<h1 mat-dialog-title>{{data.isAddingList ? 'Add List' : 'Add Task' }}</h1>
 <div mat-dialog-content>
   <mat-form-field appearance="fill">
-    <mat-label>Task name</mat-label>
-    <input matInput [(ngModel)]="data.taskName">
+    <mat-label>{{data.isAddingList ? 'List Name' : 'Task Name' }}</mat-label>
+    <input matInput [(ngModel)]="data.taskName" autocomplete="off" required />
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onCancelClick()">Cancel</button>
-  <button mat-button [mat-dialog-close]="data.taskName" cdkFocusInitial>Add</button>
+  <button
+    mat-button
+    [mat-dialog-close]="getAddTaskData()"
+    cdkFocusInitial
+    [disabled]="!data.taskName"
+  >
+    Add
+  </button>
 </div>

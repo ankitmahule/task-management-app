@@ -1,36 +1,38 @@
-* {
-  padding: 0;
-  margin: 0;
-}
-
-body {
-  font-family: "Roboto", sans-serif;
-}
+@import '~/src/styles.scss';
 
 .container {
   width: 90%;
-  margin: 4vw auto;
+  margin: 1vw auto;
 }
 
 .cards-section {
   display: flex;
   flex-wrap: wrap;
-  gap: 3%;
+  gap: 2%;
 }
 
 .mat-toolbar {
-  background: #fff;
-  border-bottom: 1px solid #ddd;
+  background: $white;
+  border-bottom: 1px solid $border;
   justify-content: space-between;
+  color: $toolbar-text;
+  h1 {
+    font-weight: bold;
+  }
 }
 
 .mat-card {
-  background: transparent;
+  background: $white;
+}
+
+.mat-button {
+  background: $heading;
+  color: $border;
 }
 
 .cards {
   width: 30%;
-  flex-grow: 1;
+  margin-top: 2%;
   &:first-of-type {
     margin-left: 0;
   }
@@ -38,38 +40,24 @@ body {
 
 .sub-cards {
   margin-top: 1vw;
-  background: #fff;
+  background: $sub-cards-background;
+  span {
+    color: $sub-cards-text;
+  }
 }
 
 .sub-cards.mat-card {
   box-shadow: none;
-  border:1px solid #ddd;
+  border: 1px solid $mat-cards;
 }
 
 .mat-card-footer {
   text-align: center;
   padding: 15% 15% 8% 15%;
-  a {
-    text-decoration: none;
-    color: #0cafff;
-    font-weight: bold;
-  }
-}
-
-.todo-color {
-  color: #fd5c63;
-}
-
-.in-progress-color {
-  color: #ffc72c;
-}
-
-.done-color {
-  color: #32de84;
 }
 
 .mat-card-title {
-  border-bottom: 1px solid #ddd;
   padding-bottom: 6%;
   margin-bottom: 6%;
+  color: $heading;
 }

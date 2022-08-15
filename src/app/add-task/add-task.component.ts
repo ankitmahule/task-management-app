@@ -12,7 +12,17 @@ export class AddTaskComponent {
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
-  onCancelClick(): void {
+  public onCancelClick(): void {
     this.dialogRef.close();
   }
+
+  public getAddTaskData(): any {
+    if(!this.data.isAddingList) {
+      return this.data;
+    }
+    this.data.categoryId = Math.floor(1000 + Math.random() * 9000);
+    this.data.categoryName = this.data.taskName;
+    this.data.tasks = [];
+    return this.data;
+  } 
 }
