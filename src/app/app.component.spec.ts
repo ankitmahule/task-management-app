@@ -52,6 +52,7 @@ describe('AppComponent', () => {
     spyOn(taskManagementService, 'addTasks').and.stub();
     component.openAddTaskDialog(true, 1234);
     expect(dialogSpy).toHaveBeenCalledWith(AddTaskComponent, {
+      width: '400px',
       data: { taskName: '', isAddingList: true, categoryId: 1234 },
     });
     expect(dialogRefSpyObj.afterClosed).toHaveBeenCalled();
